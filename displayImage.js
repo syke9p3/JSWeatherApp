@@ -1,0 +1,60 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const input = locInput;
+    const autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.addListener('place_changed', () => {
+        const selectedPlace = autocomplete.getPlace();
+        if (selectedPlace && selectedPlace.formatted_address) {
+            handleLocationChange(selectedPlace.formatted_address);
+        }
+    });
+});
+
+const locButton = document.getElementById('locButton');
+const locInput = document.querySelector('.loc-input');
+const placeImageContainer = document.getElementById('placeImageContainer');
+
+locButton.addEventListener('click', () => {
+    const input = locInput.value;
+    handleLocationChange(input);
+});
+
+locInput.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+        const input = locInput.value;
+        handleLocationChange(input);
+    }
+});
+
+function handleLocationChange(location) {
+    fetchWeatherData(location);
+    displayPlaceImage(location);
+}
+
+function fetchWeatherData(location) {
+    // Your code to fetch weather data for the given location goes here
+    console.log('Fetching weather data for:', location);
+}
+
+function displayPlaceImage(placeIdOrAddress) {
+    // Remove any previously displayed images
+    placeImageContainer.innerHTML = '';
+
+    // If the input is a place_id, directly use it; otherwise, perform a place search
+    const request = placeIdOrAddress.startsWith('place_id:')
+        ? { placeId: placeIdOrAddress, fields: ['photos'] }
+        : { query: placeIdOrAddress, fields: ['photos'] };
+
+    const service = new google.maps.places.PlacesService(document.createElement('div'));
+
+    service.findPlaceFromQuery(request, (results, status) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK && results && results.length > 0) {
+            const place = results[0];
+            if (place.photos && place.photos.length > 0) {
+                const photoUrl = place.photos[0].getUrl();
+                const imageElement = document.createElement('img');
+                imageElement.src = photoUrl;
+                placeImageContainer.appendChild(imageElement);
+            }
+        }
+    });
+}

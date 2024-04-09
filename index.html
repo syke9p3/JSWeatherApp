@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <title>Weather App | Syke</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-info">
+            <div class="pic-gradient"></div>
+            <div class="today-weather">
+                <i class=''></i> <!-- Weather Icon -->
+                <h1 class="weather-temp"> <!-- Temperature -->
+                    ...
+                </h1>
+                <h4>...</h4> <!-- Weather Description -->
+            </div>
+            <div class="today-info">
+                <h2></h2>
+                <span></span> <!-- Date -->
+                <div>
+                    <i class='bx bx-current-location'></i>
+                    <span>Loading weather...</span> <!-- City -->
+                </div>
+            </div>
+        </div>
+
+        <div class="right-info">
+            <div class="day-info">
+                <div>
+                    <span class="title ">PRECIPITATION</span>
+                    <span class="value precipitation">4 %</span>
+                </div>
+                <div>
+                    <span class="title ">HUMIDITY</span>
+                    <span class="value humidity">34 %</span>
+                </div>
+                <div>
+                    <span class="title ">WIND SPEED</span>
+                    <span class="value wind_speed">6 km/h</span>
+                </div>
+            </div>
+
+            <ul class="days-list">
+                <li>
+                    <i class='bx bx-cloud'></i>
+                    <span>Sat</span>
+                    <span class="day-temp">23°C</span>
+                </li>
+                <li>
+                    <i class='bx bx-sun'></i>
+                    <span>Sun</span>
+                    <span class="day-temp">28°C</span>
+                </li>
+                <li>
+                    <i class='bx bx-cloud-rain'></i>
+                    <span>Mon</span>
+                    <span class="day-temp">20°C</span>
+                </li>
+                <li>
+                    <i class='bx bx-cloud-rain'></i>
+                    <span>Tue</span>
+                    <span class="day-temp">21°C</span>
+                </li>
+                <li>
+                    <i class='bx bx-cloud-drizzle'></i>
+                    <span>Wed</span>
+                    <span class="day-temp">21°C</span>
+                </li>
+            </ul>
+
+            <div class="btn-container">
+                <input class="loc-input" placeholder="Search Location">
+                <button class="loc-button"><i class='bx bx-search'></i></button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADZRooKcW4_RTtEPTajKSgp7Jbg9fk750&libraries=places"></script>
+    <script src="utils.js"></script>
+    <script src="script.js"></script>
+    
+</body>
+
+</html>

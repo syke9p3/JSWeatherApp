@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Maps Autocomplete Example</title>
+</head>
+<body>
+    <input type="text" id="autocomplete-input" placeholder="Enter a location">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADZRooKcW4_RTtEPTajKSgp7Jbg9fk750&libraries=places"></script>
+    <script>
+        function initializeAutocomplete() {
+            const input = document.getElementById('autocomplete-input');
+            const autocomplete = new google.maps.places.Autocomplete(input);
+        }
+
+        // Replace YOUR_API_KEY with your actual Google Maps API key
+        // Make sure you have enabled the "Places API" in your Google Cloud Console
+        google.maps.event.addDomListener(window, 'load', initializeAutocomplete);
+    </script>
+</body>
+</html>
